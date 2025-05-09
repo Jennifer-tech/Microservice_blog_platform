@@ -1,0 +1,11 @@
+# Ignore system files
+.DS_Store
+
+# Ignore log files
+logs/
+
+# Ignore node_modules globally (just in case)
+**/node_modules/
+
+# Ignore env files from all services
+**/.env
