@@ -1,0 +1,39 @@
+version: '3'
+services:
+  user-service:
+    build: ./user-service
+    ports:
+      - "4001:4001"
+    env_file:
+      - ./user-service/.env
+
+  post-service:
+    build: ./post-service
+    ports:
+      - "4002:4002"
+    env_file:
+      - ./post-service/.env
+
+  comment-service:
+    build: ./comment-service
+    ports:
+      - "4003:4003"
+    env_file:
+      - ./comment-service/.env
+
+  notification-service:
+    build: ./notification-service
+    ports:
+      - "4004:4004"
+    env_file:
+      - ./notification-service/.env
+
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "4000:4000"
+    depends_on:
+      - user-service
+      - post-service
+      - comment-service
+      - notification-service
